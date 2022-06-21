@@ -62,9 +62,9 @@ A simple gui youtube video downloader built with python, pytube to communicate w
 
 ### Built With
 
-* [Python](https://kivy.org/)
-* [Pytube](https://www.python.org/)
-* [Kivy](https://pytube.io/)
+* [Python](https://www.python.org/)
+* [Pytube](https://pytube.io/)
+* [Kivy](https://kivy.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
