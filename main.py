@@ -77,6 +77,7 @@ def callback(value):
         else:
             print('Invalid')
         top = Toplevel()
+        top.resizable(False, False)
         canvas2 = Canvas(top, width=500, height=200, bg='#282828')
         canvas2.grid(rowspan=2)
         if value == 'Audio':
