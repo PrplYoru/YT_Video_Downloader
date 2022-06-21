@@ -1,5 +1,11 @@
 <div id="top"></div>
 
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
 
 
 <!-- PROJECT LOGO -->
@@ -11,9 +17,9 @@
   <p align="center">
     GUI Youtube Video Downloader
     <br>
-    <a href="https://github.com/EdoardoMorosanu/YT_Video_Downloader/issues">Report Bug</a>
+    <a href="https://github.com/Edoardo-Morosanu/YT_Video_Downloader/issues">Report Bug</a>
     ·
-    <a href="https://github.com/EdoardoMorosanu/YT_Video_Downloader/issues">Request Feature</a>
+    <a href="https://github.com/Edoardo-Morosanu/YT_Video_Downloader/issues">Request Feature</a>
   </p>
 </div>
 
@@ -77,7 +83,7 @@ Make sure you installed the latest Python version on your machine. Also make sur
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/EdoardoMorosanu/YT_Video_Downloader.git
+   git clone https://github.com/Edoardo-Morosanu/YT_Video_Downloader.git
    ```
 2. Install various requirements
    ```sh
@@ -107,7 +113,7 @@ Make sure you installed the latest Python version on your machine. Also make sur
 - [2022/??/??] Complete remake of the UI with TKinter
 - [2022/??/??] More options when downloadng a video or an mp3
 
-See the [open issues](https://github.com/EdoardoMorosanu/YT_Video_Downloader/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/Edoardo-Morosanu/YT_Video_Downloader/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -139,7 +145,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Edoardo Morosanu - [@Twitter](https://twitter.com/EdoardoMorosanu) - edoardo.morosanu@ittvt.edu.it
 
-Project Link: [https://github.com/EdoardoMorosanu/YT_Video_Downloader](https://github.com/EdoardoMorosanu/YT_Video_Downloader)
+Project Link: [https://github.com/Edoardo-Morosanu/YT_Video_Downloader](https://github.com/Edoardo-Morosanu/YT_Video_Downloader)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -147,16 +153,13 @@ Project Link: [https://github.com/EdoardoMorosanu/YT_Video_Downloader](https://g
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/EdoardoMorosanu/YT_Video_Downloader.svg?style=for-the-badge
-[contributors-url]: https://github.com/EdoardoMorosanu/YT_Video_Downloader/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/EdoardoMorosanu/YT_Video_Downloader.svg?style=for-the-badge
-[forks-url]: https://github.com/EdoardoMorosanu/YT_Video_Downloader/network/members
-[stars-shield]: https://img.shields.io/github/stars/EdoardoMorosanu/YT_Video_Downloader.svg?style=for-the-badge
-[stars-url]: https://github.com/EdoardoMorosanu/YT_Video_Downloader/stargazers
-[issues-shield]: https://img.shields.io/github/issues/EdoardoMorosanu/YT_Video_Downloader.svg?style=for-the-badge
-[issues-url]: https://github.com/EdoardoMorosanu/YT_Video_Downloader/issues
-[license-shield]: https://img.shields.io/github/license/EdoardoMorosanu/YT_Video_Downloader.svg?style=for-the-badge
-[license-url]: https://github.com/EdoardoMorosanu/YT_Video_Downloader/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[contributors-shield]: https://img.shields.io/github/contributors/Edoardo-Morosanu/YT_Video_Downloader.svg?style=for-the-badge
+[contributors-url]: https://github.com/Edoardo-Morosanu/YT_Video_Downloader/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Edoardo-Morosanu/YT_Video_Downloader.svg?style=for-the-badge
+[forks-url]: https://github.com/Edoardo-Morosanu/YT_Video_Downloader/network/members
+[stars-shield]: https://img.shields.io/github/stars/Edoardo-Morosanu/YT_Video_Downloader.svg?style=for-the-badge
+[stars-url]: https://github.com/Edoardo-Morosanu/YT_Video_Downloader/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Edoardo-Morosanu/YT_Video_Downloader.svg?style=for-the-badge
+[issues-url]: https://github.com/Edoardo-Morosanu/YT_Video_Downloader/issues
+[license-shield]: https://img.shields.io/github/license/Edoardo-Morosanu/YT_Video_Downloader.svg?style=for-the-badge
+[license-url]: https://github.com/Edoardo-Morosanu/YT_Video_Downloader/blob/master/LICENSE.txt
