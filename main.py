@@ -29,21 +29,29 @@ filentry = Entry(main, width=50, bg='#b3b3b3')
 filentry.grid(row=6, column=0)
 
 selec = StringVar()
-selec.set('Select')
+selec.set('Select what you want to download')
 
 dropdwn = OptionMenu(main, selec, 'Video', 'Audio', 'Video Only', )
 dropdwn.grid(row=7, column=0)
 dropdwn.config(bg='#282828', fg='#ffffff')
 dropdwn['menu'].config(bg='#282828', fg='#ffffff')
 
-confbtn = Button(main, text='Confirm',font='Verdana', bg='#404040', fg='#ffffff', command=lambda:callback(selec.get())).grid(row=8, column=0)
+quality = StringVar()
+quality.set('Select quality for the video')
+
+dropmen = OptionMenu(main, quality, '144p', '240p', '360p', '480p', '720p', '1080p', '1440p', '2160p')
+dropmen.grid(row=8, column=0)
+dropmen.config(bg='#282828', fg='#ffffff')
+dropmen['menu'].config(bg='#282828', fg='#ffffff')
+
+confbtn = Button(main, text='Confirm',font='Verdana', bg='#404040', fg='#ffffff', command=lambda:callback(selec.get(), quality.get())).grid(row=9, column=0)
 
 def open_brws():
     global file
     file = askdirectory(parent=main, title='Select a folder')
     statusbar = Label(main, text='Path: '+file, relief=SUNKEN, font='Verdana', bg='#282828', fg='#ffffff').grid(row=12, column=0)
 
-def callback(value):
+def callback(value, value1):
         if value == 'Audio':
             try:
                 yt = YouTube(linkentry.get())
@@ -57,23 +65,21 @@ def callback(value):
                 yt = YouTube(linkentry.get())
             except:
                 print('Connection Error')
-            v = ffmpeg.input(yt.streams.filter(resolution='1080p').first().download(file, 'oiawjkldsnakdhnsak.mp4'))
+            v = ffmpeg.input(yt.streams.filter(resolution=value1).first().download(file, 'oiawjkldsnakdhnsak.mp4'))
             a = ffmpeg.input(yt.streams.get_audio_only().download(file, 'auhdwkljsahiluhnwsda.mp4'))
 
             r = ffmpeg.concat(v, a, v=1, a=1).output(f'{file}/{filentry.get()}.mp4').run()
-            print(r)
             if os.path.exists(f'{file}/oiawjkldsnakdhnsak.mp4') and os.path.exists(f'{file}/auhdwkljsahiluhnwsda.mp4'):
                 os.remove(f'{file}/oiawjkldsnakdhnsak.mp4')
                 os.remove(f'{file}/auhdwkljsahiluhnwsda.mp4')
             else:
                 print('The files do not exist')
-        elif value == 'Video only':
+        elif value == 'Video Only':
             try:
                 yt = YouTube(linkentry.get())
             except:
                 print('Connection Error')
-            mp4file = yt.streams.filter(resolution='1080p').first().download(file, f'{filentry.get()}.mp4')
-            print(mp4file)
+            mp4file = yt.streams.filter(resolution=value1).first().download(file, f'{filentry.get()}.mp4')
         else:
             print('Invalid')
         top = Toplevel()

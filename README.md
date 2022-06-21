@@ -112,7 +112,10 @@ Make sure you installed the latest Python version on your machine. Also make sur
 
 - [2022/06/21] Complete remake of the UI with TKinter
 - [2022/06/21] Custom destination folder
-- [2022/??/??] Option to choose quality of video
+- [2022/06/21] Option to choose quality of video
+  - [2022/06/21] Up to 4k
+  - [2022/??/??] Up to 8k
+- [2022/??/??] Audio quality +320kbps(currently 64kbps)
 
 See the [open issues](https://github.com/Edoardo-Morosanu/YT_Video_Downloader/issues) for a full list of proposed features (and known issues).
 
