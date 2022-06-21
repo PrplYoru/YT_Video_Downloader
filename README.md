@@ -64,7 +64,7 @@ A simple gui youtube video downloader built with python, pytube to communicate w
 
 * [Python](https://www.python.org/)
 * [Pytube](https://pytube.io/)
-* [Kivy](https://kivy.org/)
+* [TKinter](#)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -110,8 +110,9 @@ Make sure you installed the latest Python version on your machine. Also make sur
 <!-- ROADMAP -->
 ## Roadmap
 
-- [2022/??/??] Complete remake of the UI with TKinter
-- [2022/??/??] More options when downloadng a video or an mp3
+- [2022/06/21] Complete remake of the UI with TKinter
+- [2022/06/21] Custom destination folder
+- [2022/??/??] Option to choose quality of video
 
 See the [open issues](https://github.com/Edoardo-Morosanu/YT_Video_Downloader/issues) for a full list of proposed features (and known issues).
 
