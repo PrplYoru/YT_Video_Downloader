@@ -7,7 +7,7 @@ main = Tk()
 main.title('YtDownloader')
 main.resizable(False, False)
 
-file = 'C:/'
+file = f'C:/Users/{os.getlogin()}/Downloads'
 
 canvas = Canvas(main, width=1000, height=600, bg='#282828')
 canvas.grid(rowspan=12)
@@ -31,7 +31,7 @@ filentry.grid(row=6, column=0)
 selec = StringVar()
 selec.set('Select what you want to download')
 
-dropdwn = OptionMenu(main, selec, 'Video', 'Audio', 'Video Only', )
+dropdwn = OptionMenu(main, selec, 'Video', 'Audio', 'Video Only',)
 dropdwn.grid(row=7, column=0)
 dropdwn.config(bg='#282828', fg='#ffffff')
 dropdwn['menu'].config(bg='#282828', fg='#ffffff')
