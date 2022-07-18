@@ -1,3 +1,4 @@
 pytube
 ffmpeg-python
 tk
+yt-dlp

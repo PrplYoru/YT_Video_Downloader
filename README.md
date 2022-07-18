@@ -42,6 +42,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
+    <li><a href="#download-private-videos">Download private/members-only videos</li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -64,19 +65,20 @@ A simple gui youtube video downloader built with python, pytube to communicate w
 
 * [Python](https://www.python.org/)
 * [Pytube](https://pytube.io/)
-* [TKinter](#)
+* [TKinter](http://tkdocs.com/)
+* [Yt-dlp](https://github.com/yt-dlp/yt-dlp)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Getting Started
-This will guide yout through the installation of the 
+This will guide you through the installation of the program.
 
 ### Prerequisites
 
 Make sure you installed the latest Python version on your machine. Also make sure that you installed pip to download the requirements.
-* After cloning the repo
+* Using PIP
   ```sh
-  pip install -r requirements.txt
+  pip install pytube tk ffmpeg-python yt-dlp
   ```
 
 ### Installation
@@ -85,7 +87,7 @@ Make sure you installed the latest Python version on your machine. Also make sur
    ```sh
    git clone https://github.com/Edoardo-Morosanu/YT_Video_Downloader.git
    ```
-2. Install various requirements
+2. Install various requirements if not already installed
    ```sh
    pip install -r requirements.txt
    ```
@@ -105,7 +107,16 @@ Make sure you installed the latest Python version on your machine. Also make sur
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Download private videos
 
+This will guide you through the process of downloading private and members-only videos.
+
+First of all download an extension to export the cookies from youtube to a txt file, like:
+* [Get cookies.txt](https://chrome.google.com/webstore/detail/get-cookiestxt/bgaddhkoddajcdgocldbbfleckgcbcid?hl=en)
+
+After doing so, go to any members-only video you have access to, and search for the extension icon(Half-eaten cookie), click on it and then click export.<br/>
+Save the txt file as "**cookies.txt**" in the program folder. After you've done all of this, open the program, and select yes in the members-only/private video dropdown menu, the video will be automatically downloaded. <br/>
+There's no need to export the cookie file again, unless it gives you any access problems.
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -114,7 +125,7 @@ Make sure you installed the latest Python version on your machine. Also make sur
 - [2022/06/21] Custom destination folder
 - [2022/06/21] Option to choose quality of video
   - [2022/06/21] Up to 4k
-  - [2022/??/??] Up to 8k
+- [2022/07/18] Added option to download members-only and private videos
 
 See the [open issues](https://github.com/Edoardo-Morosanu/YT_Video_Downloader/issues) for a full list of proposed features (and known issues).
 
