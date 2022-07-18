@@ -55,7 +55,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-A simple gui youtube video downloader built with python, pytube to communicate with youtube and kivy for the GUI. 
+A simple gui youtube video downloader built with python, pytube, ffmpeg, tkinter and yt-dlp. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
