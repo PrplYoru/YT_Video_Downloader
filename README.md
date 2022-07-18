@@ -78,30 +78,30 @@ This will guide you through the installation of the program.
 Make sure you installed the latest Python version on your machine. Also make sure that you installed pip to download the requirements.
 * Using PIP
   ```sh
-  pip install pytube tk ffmpeg-python yt-dlp
+  $ pip install pytube tk ffmpeg-python yt-dlp
   ```
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Edoardo-Morosanu/YT_Video_Downloader.git
+   $ git clone https://github.com/Edoardo-Morosanu/YT_Video_Downloader.git
    ```
 2. Install various requirements if not already installed
    ```sh
-   pip install -r requirements.txt
+   $ pip install -r requirements.txt
    ```
 3. Start the program
     ```sh
-    python main.py
+    $ python main.py
     ```
     - Python3:
     ```sh
-    python3 main.py
+    $ python3 main.py
     ```
     - Python2:
     ```sh
-    python2 main.py
+    $ python2 main.py
    ```
 
 
