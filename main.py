@@ -1,63 +1,151 @@
 import ffmpeg, os, yt_dlp
-from tkinter import *
 from pytube import YouTube
+import customtkinter as ctk
+import tkinter as tk
 from tkinter.filedialog import askdirectory
 
-main = Tk()
-main.title('YtDownloader')
-main.resizable(False, False)
+ctk.set_appearance_mode('dark')
+ctk.set_default_color_theme('dark-blue')
 
 file = f'C:/Users/{os.getlogin()}/Downloads'
 
-canvas = Canvas(main, width=1000, height=600, bg='#282828')
-canvas.grid(rowspan=12)
+main = ctk.CTk()
+main.title('Youtube Downloader')
+main.geometry(f'{1200}x{800}')
+main.resizable(False, False)
+main.configure(bg='#1f1f1f')
 
-statusbar = Label(main, text='Path: '+file, relief=SUNKEN, font='Verdana', bg='#282828', fg='#ffffff').grid(row=12, rowspan=3, column=0)
+frame = ctk.CTkFrame(main, 
+                   width=1000, 
+                   height=600, 
+                   bg='#282828',
+                   corner_radius=10,)
+frame.pack(padx=20, pady=20, expand=True)
+frame.pack_propagate(0)
 
-titlabel = Label(main, text='Insert a youtube link', font='Verdana', bg='#282828', fg='#ffffff').grid(row=1, column=0)
+label = ctk.CTkLabel(master=frame, text='Insert a youtube link', text_font='Verdana',)
+label.pack(padx=10)
 
-linkentry = Entry(main, width=50, bg='#b3b3b3')
-linkentry.grid(row=2, column=0)
+user_var = tk.StringVar()
+entry = ctk.CTkEntry(master=frame,
+                    placeholder_text='Insert a youtube link',
+                    textvariable=user_var,
+                    width=500, 
+                    bg='#b3b3b3',
+                    corner_radius=10,
+                    height=5)
+entry.pack(padx=10, pady=10)
 
-browselbl = Label(main, text='Select the folder where you want to save the file', font='Verdana', bg='#282828', fg='#ffffff').grid(row=3, column=0)
-btntext = StringVar()
-btntext.set('Browse')
-browsebtn = Button(main, text=btntext.get(), font='Verdana', bg='#404040', fg='#ffffff', command=lambda:open_brws()).grid(row=4, column=0)
-
-namelbl = Label(main, text='Declare a filename', font='Verdana', bg='#282828', fg='#ffffff').grid(row=5, column=0)
-filentry = Entry(main, width=50, bg='#b3b3b3')
-filentry.grid(row=6, column=0)
-
-selec = StringVar()
-selec.set('Select what you want to download')
-
-dropdwn = OptionMenu(main, selec, 'Video', 'Audio', 'Video Only',)
-dropdwn.grid(row=7, column=0)
-dropdwn.config(bg='#282828', fg='#ffffff')
-dropdwn['menu'].config(bg='#282828', fg='#ffffff')
-
-mempr = StringVar()
-mempr.set('Is it a members-only/private video?')
-
-mempdwn = OptionMenu(main, mempr, 'Yes', 'No')
-mempdwn.grid(row=8, column=0)
-mempdwn.config(bg='#282828', fg='#ffffff')
-mempdwn['menu'].config(bg='#282828', fg='#ffffff')
-
-quality = StringVar()
-quality.set('Select quality for the video')
-
-dropmen = OptionMenu(main, quality, '144p', '240p', '360p', '480p', '720p', '1080p', '1440p', '2160p')
-dropmen.grid(row=9, column=0)
-dropmen.config(bg='#282828', fg='#ffffff')
-dropmen['menu'].config(bg='#282828', fg='#ffffff')
-
-confbtn = Button(main, text='Confirm',font='Verdana', bg='#404040', fg='#ffffff', command=lambda:callback(selec.get(), quality.get(), mempr.get())).grid(row=10, column=0)
-
-def open_brws():
+def openDialog(textvar):
     global file
     file = askdirectory(parent=main, title='Select a folder')
-    statusbar = Label(main, text='Path: '+file, relief=SUNKEN, font='Verdana', bg='#282828', fg='#ffffff').grid(row=12, column=0)
+    textvar.set(file)
+
+
+labeltxt = ctk.CTkLabel(
+            text='Select the folder where you want to save the file', 
+            master=frame, 
+            text_font='Verdana',)
+labeltxt.pack(padx=10, pady=10)
+
+
+
+opendialog = ctk.CTkButton(master=frame, 
+                        text='Browse', 
+                        text_font='Verdana', 
+                        bg='#404040',
+                        command=lambda:openDialog(path_var))
+opendialog.pack(padx=10, pady=10)
+
+# declare a filename
+labelname = ctk.CTkLabel(
+            text='Insert the name of the file',
+            master=frame,
+            text_font='Verdana',)
+labelname.pack(padx=10, pady=10)
+
+name_var = tk.StringVar()
+entryname = ctk.CTkEntry(master=frame,
+                    placeholder_text='Insert the name of the file',
+                    textvariable=name_var,
+                    width=500,
+                    bg='#b3b3b3',
+                    corner_radius=10,
+                    height=5)
+entryname.pack(padx=10, pady=10)
+
+# if he wants to download the video or the audio
+
+labelaudio = ctk.CTkLabel(
+            text='Do you want to download the audio or the video?',
+            master=frame,
+            text_font='Verdana',)
+labelaudio.pack(padx=10, pady=10)
+
+# optionmenu for the audio or the video
+
+audio_var = tk.StringVar()
+audio_var.set('Both')
+audio = ctk.CTkOptionMenu(master=frame,
+                        variable=audio_var,
+                        values=['Video', 'Audio', 'Both'],
+                        width=500,
+                        bg='#b3b3b3',
+                        corner_radius=10,
+                        height=10)
+audio.pack(padx=10, pady=10)
+
+# members only or private video
+labelmembers = ctk.CTkLabel(
+            text='Is the video a members only or a private video?',
+            master=frame,
+            text_font='Verdana',)
+labelmembers.pack(padx=10, pady=10)
+# optionmenu for the members only or private video
+members_var = tk.StringVar()
+members_var.set('No')
+members = ctk.CTkOptionMenu(master=frame,
+                        variable=members_var,
+                        values=['Yes', 'No'],
+                        width=500,
+                        bg='#b3b3b3',
+                        corner_radius=10,
+                        height=10)
+members.pack(padx=10, pady=10)
+
+# declare a quality
+labelquality = ctk.CTkLabel(
+            text='Select the quality of the video',
+            master=frame,
+            text_font='Verdana',)
+labelquality.pack(padx=10, pady=10)
+
+quality_var = tk.StringVar()
+quality_var.set('Select the quality of the video')
+quality = ctk.CTkOptionMenu(master=frame,
+                            variable=quality_var,
+                            values=['Select the quality of the video', '144p', '240p', '360p', '480p', '720p', '1080p', '1440p', '2160p'],
+                            width=500,
+                            bg='#b3b3b3',
+                            corner_radius=10,
+                            height=10)
+quality.pack(padx=10, pady=10)
+
+confbutton = ctk.CTkButton(master=frame,
+                        text='Confirm',
+                        text_font='Verdana',
+                        bg='#404040',
+                        height=10,
+                        command=lambda:callback(audio_var.get(), quality_var.get(), members_var.get(),))
+confbutton.pack(padx=10, pady=10)
+
+path_var = tk.StringVar()
+path_var.set(file)
+statusbar = ctk.CTkLabel(master=frame, 
+                        textvariable=path_var,
+                        text_font='Verdana', 
+                        bg='#282828',)
+statusbar.pack(padx=10, pady=10)
 
 def callback(value, value1, value2):
         if value == 'Audio':
@@ -65,73 +153,74 @@ def callback(value, value1, value2):
                 try:
                     ydl_opts = {
                         'format': 'bestaudio/best',
-                        'outtmpl': f'{file}/{filentry.get()}.mp3',
+                        'outtmpl': f'{file}/{name_var.get()}.mp3',
                         'cookiefile': 'cookies.txt',
                     }
                     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                        ydl.download([linkentry.get()])
+                        ydl.download([user_var.get()])
                 except:
                     print('Connection Error')
             else:
                 try:
-                    yt = YouTube(linkentry.get())
+                    yt = YouTube(user_var.get())
                 except:
                     print('Connection Error')
-                mp3file = yt.streams.get_audio_only().download(file, f'{filentry.get()}.mp3')
-        elif value == 'Video':
+                mp3file = yt.streams.get_audio_only().download(file, f'{name_var.get()}.mp3')
+        elif value == 'Both':
             if value2 == 'Yes':
                 try:
                     ydl_opts = {
                         'format': 'bestvideo+bestaudio',
-                        'outtmpl': f'{file}/{filentry.get()}.mp4',
+                        'outtmpl': f'{file}/{name_var.get()}.mp4',
                         'cookiefile': 'cookies.txt',
                     }
                     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                        ydl.download([linkentry.get()])
+                        ydl.download([user_var.get()])
                 except:
                     print('Connection Error')
             else:
                 try:
-                    yt = YouTube(linkentry.get())
+                    yt = YouTube(user_var.get())
                 except:
                     print('Connection Error')
 
                 v = ffmpeg.input(yt.streams.filter(resolution=value1).first().download(file, 'oiawjkldsnakdhnsak.mp4'))
                 a = ffmpeg.input(yt.streams.get_audio_only().download(file, 'auhdwkljsahiluhnwsda.mp4'))
 
-                r = ffmpeg.concat(v, a, v=1, a=1).output(f'{file}/{filentry.get()}.mp4').run()
+                r = ffmpeg.concat(v, a, v=1, a=1).output(f'{file}/{name_var.get()}.mp4').run()
                 if os.path.exists(f'{file}/oiawjkldsnakdhnsak.mp4') and os.path.exists(f'{file}/auhdwkljsahiluhnwsda.mp4'):
                     os.remove(f'{file}/oiawjkldsnakdhnsak.mp4')
                     os.remove(f'{file}/auhdwkljsahiluhnwsda.mp4')
                 else:
                     print('The files do not exist')
-        elif value == 'Video Only':
+        elif value == 'Video':
             if value2 == 'Yes':
                 try:
                     ydl_opts = {
                         'format': 'bestvideo',
-                        'outtmpl': f'{file}/{filentry.get()}.mp4',
+                        'outtmpl': f'{file}/{name_var.get()}.mp4',
                         'cookiefile': 'cookies.txt',
                     }
                     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                        ydl.download([linkentry.get()])
+                        ydl.download([user_var.get()])
                 except:
                     print('Connection Error')
             else:
                 try:
-                    yt = YouTube(linkentry.get())
+                    yt = YouTube(user_var.get())
                 except:
                     print('Connection Error')
-                mp4file = yt.streams.filter(resolution=value1).first().download(file, f'{filentry.get()}.mp4')
+                mp4file = yt.streams.filter(resolution=value1).first().download(file, f'{name_var.get()}.mp4')
         else:
-            print('Invalid')
+            print()
         
-        top = Toplevel()
+        top = ctk.CTkToplevel()
         top.resizable(False, False)
-        canvas2 = Canvas(top, width=500, height=200, bg='#282828')
-        canvas2.grid(rowspan=2)
+        top.geometry(f'{1000}x{600}')
         if value == 'Audio':
-            complete = Label(top, text=f'Download Completed!, saved to: {file}/{filentry.get()}.mp3', bg='#282828', fg='#ffffff').grid(row=0, column=0)
+            complete = ctk.CTkLabel(top, text=f'Download Completed!, saved to: {file}/{name_var.get()}.mp3', bg='#282828', fg='#ffffff').grid(row=0, column=0)
         else:
-            complete = Label(top, text=f'Download Completed!, saved to: {file}/{filentry.get()}.mp4', bg='#282828', fg='#ffffff').grid(row=0, column=0)
+            complete = ctk.CTkLabel(top, text=f'Download Completed!, saved to: {file}/{name_var.get()}.mp4', bg='#282828', fg='#ffffff').grid(row=0, column=0)
+
+
 main.mainloop()

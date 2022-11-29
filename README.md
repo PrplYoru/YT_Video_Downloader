@@ -67,19 +67,12 @@ A simple gui youtube video downloader built with python, pytube, ffmpeg, tkinter
 * [Pytube](https://pytube.io/)
 * [TKinter](http://tkdocs.com/)
 * [Yt-dlp](https://github.com/yt-dlp/yt-dlp)
+* [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Getting Started
 This will guide you through the installation of the program.
-
-### Prerequisites
-
-Make sure you installed the latest Python version on your machine. Also make sure that you installed pip to download the requirements.
-* Using PIP
-  ```sh
-  $ pip install pytube tk ffmpeg-python yt-dlp
-  ```
 
 ### Installation
 
@@ -94,14 +87,6 @@ Make sure you installed the latest Python version on your machine. Also make sur
 3. Start the program
     ```sh
     $ python main.py
-    ```
-    - Python3:
-    ```sh
-    $ python3 main.py
-    ```
-    - Python2:
-    ```sh
-    $ python2 main.py
    ```
 
 
@@ -126,6 +111,8 @@ There's no need to export the cookie file again, unless it gives you any access 
 - [2022/06/21] Option to choose quality of video
   - [2022/06/21] Up to 4k
 - [2022/07/18] Added option to download members-only and private videos
+- [2022/11/29] Modernized UI using CustomTkinter
+- [??/??/??] Reorganize UI
 
 See the [open issues](https://github.com/Edoardo-Morosanu/YT_Video_Downloader/issues) for a full list of proposed features (and known issues).
 
@@ -157,7 +144,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Edoardo Morosanu - [@Twitter](https://twitter.com/EdoardoMorosanu) - edoardo.morosanu@ittvt.edu.it
+Edoardo Morosanu - [@Twitter](https://twitter.com/EdoardoMorosanu) - o8qq@proton.me
 
 Project Link: [https://github.com/Edoardo-Morosanu/YT_Video_Downloader](https://github.com/Edoardo-Morosanu/YT_Video_Downloader)
 
