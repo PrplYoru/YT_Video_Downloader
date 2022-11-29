@@ -9,6 +9,12 @@ ctk.set_default_color_theme('dark-blue')
 
 file = f'C:/Users/{os.getlogin()}/Downloads'
 
+def openDialog(textvar):
+    global file
+    file = askdirectory(parent=main, title='Select a folder')
+    textvar.set(file)
+    
+
 main = ctk.CTk()
 main.title('Youtube Downloader')
 main.geometry(f'{1200}x{800}')
@@ -35,11 +41,6 @@ entry = ctk.CTkEntry(master=frame,
                     corner_radius=10,
                     height=5)
 entry.pack(padx=10, pady=10)
-
-def openDialog(textvar):
-    global file
-    file = askdirectory(parent=main, title='Select a folder')
-    textvar.set(file)
 
 
 labeltxt = ctk.CTkLabel(
@@ -136,7 +137,7 @@ confbutton = ctk.CTkButton(master=frame,
                         text_font='Verdana',
                         bg='#404040',
                         height=10,
-                        command=lambda:callback(audio_var.get(), quality_var.get(), members_var.get(),))
+                        command=lambda:callback(audio_var.get(), quality_var.get(), members_var.get()))
 confbutton.pack(padx=10, pady=10)
 
 path_var = tk.StringVar()
@@ -145,82 +146,97 @@ statusbar = ctk.CTkLabel(master=frame,
                         textvariable=path_var,
                         text_font='Verdana', 
                         bg='#282828',)
-statusbar.pack(padx=10, pady=10)
+statusbar.pack(padx=10, pady=10)    
 
 def callback(value, value1, value2):
-        if value == 'Audio':
-            if value2 == 'Yes':
-                try:
-                    ydl_opts = {
-                        'format': 'bestaudio/best',
-                        'outtmpl': f'{file}/{name_var.get()}.mp3',
-                        'cookiefile': 'cookies.txt',
-                    }
-                    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                        ydl.download([user_var.get()])
-                except:
-                    print('Connection Error')
-            else:
-                try:
-                    yt = YouTube(user_var.get())
-                except:
-                    print('Connection Error')
-                mp3file = yt.streams.get_audio_only().download(file, f'{name_var.get()}.mp3')
-        elif value == 'Both':
-            if value2 == 'Yes':
-                try:
-                    ydl_opts = {
-                        'format': 'bestvideo+bestaudio',
-                        'outtmpl': f'{file}/{name_var.get()}.mp4',
-                        'cookiefile': 'cookies.txt',
-                    }
-                    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                        ydl.download([user_var.get()])
-                except:
-                    print('Connection Error')
-            else:
-                try:
-                    yt = YouTube(user_var.get())
-                except:
-                    print('Connection Error')
-
-                v = ffmpeg.input(yt.streams.filter(resolution=value1).first().download(file, 'oiawjkldsnakdhnsak.mp4'))
-                a = ffmpeg.input(yt.streams.get_audio_only().download(file, 'auhdwkljsahiluhnwsda.mp4'))
-
-                r = ffmpeg.concat(v, a, v=1, a=1).output(f'{file}/{name_var.get()}.mp4').run()
-                if os.path.exists(f'{file}/oiawjkldsnakdhnsak.mp4') and os.path.exists(f'{file}/auhdwkljsahiluhnwsda.mp4'):
-                    os.remove(f'{file}/oiawjkldsnakdhnsak.mp4')
-                    os.remove(f'{file}/auhdwkljsahiluhnwsda.mp4')
-                else:
-                    print('The files do not exist')
-        elif value == 'Video':
-            if value2 == 'Yes':
-                try:
-                    ydl_opts = {
-                        'format': 'bestvideo',
-                        'outtmpl': f'{file}/{name_var.get()}.mp4',
-                        'cookiefile': 'cookies.txt',
-                    }
-                    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                        ydl.download([user_var.get()])
-                except:
-                    print('Connection Error')
-            else:
-                try:
-                    yt = YouTube(user_var.get())
-                except:
-                    print('Connection Error')
-                mp4file = yt.streams.filter(resolution=value1).first().download(file, f'{name_var.get()}.mp4')
+    if value == 'Audio':
+        if value2 == 'Yes':
+            try:
+                ydl_opts = {
+                    'format': 'bestaudio/best',
+                    'outtmpl': f'{file}/{name_var.get()}.mp3',
+                    'cookiefile': 'cookies.txt',
+                }
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    ydl.download([user_var.get()])
+            except:
+                print('Connection Error')
         else:
-            print()
+            try:
+                yt = YouTube(user_var.get())
+            except:
+                print('Connection Error')
+            mp3file = yt.streams.get_audio_only().download(file, f'{name_var.get()}.mp3')
+    elif value == 'Both':
+        if value2 == 'Yes':
+            try:
+                ydl_opts = {
+                    'format': 'bestvideo+bestaudio',
+                    'outtmpl': f'{file}/{name_var.get()}.mp4',
+                    'cookiefile': 'cookies.txt',
+                }
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    ydl.download([user_var.get()])
+            except:
+                print('Connection Error')
+        else:
+            try:
+                yt = YouTube(user_var.get())
+            except:
+                print('Connection Error')
+
+            v = ffmpeg.input(yt.streams.filter(resolution=value1).first().download(file, 'oiawjkldsnakdhnsak.mp4'))
+            a = ffmpeg.input(yt.streams.get_audio_only().download(file, 'auhdwkljsahiluhnwsda.mp4'))
+
+            r = ffmpeg.concat(v, a, v=1, a=1).output(f'{file}/{name_var.get()}.mp4').run()
+            if os.path.exists(f'{file}/oiawjkldsnakdhnsak.mp4') and os.path.exists(f'{file}/auhdwkljsahiluhnwsda.mp4'):
+                os.remove(f'{file}/oiawjkldsnakdhnsak.mp4')
+                os.remove(f'{file}/auhdwkljsahiluhnwsda.mp4')
+            else:
+                print('The files do not exist')
+    elif value == 'Video':
+        if value2 == 'Yes':
+            try:
+                ydl_opts = {
+                    'format': 'bestvideo',
+                    'outtmpl': f'{file}/{name_var.get()}.mp4',
+                    'cookiefile': 'cookies.txt',
+                }
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    ydl.download([user_var.get()])
+            except:
+                print('Connection Error')
+        else:
+            try:
+                yt = YouTube(user_var.get())
+            except:
+                print('Connection Error')
+            mp4file = yt.streams.filter(resolution=value1).first().download(file, f'{name_var.get()}.mp4')
+    else:
+        print('Invalid option')
         
-        top = ctk.CTkToplevel()
-        top.resizable(False, False)
-        top.geometry(f'{1000}x{600}')
-        if value == 'Audio':
-            complete = ctk.CTkLabel(top, text=f'Download Completed!, saved to: {file}/{name_var.get()}.mp3', bg='#282828', fg='#ffffff').grid(row=0, column=0)
-        else:
-            complete = ctk.CTkLabel(top, text=f'Download Completed!, saved to: {file}/{name_var.get()}.mp4', bg='#282828', fg='#ffffff').grid(row=0, column=0)
+    #create a popup window to show the download status
+    
 
+    #create a label to show the download status
+    popup = tk.Tk()
+    popup.title('Download Status')
+    popup.geometry('400x100')
+    popup.resizable(False, False)
+    popup.configure(bg='#282828')
+    label = ctk.CTkLabel(master=popup,
+                        text='Download completed\n Path: ' + file + "/" + name_var.get(),
+                        text_font='Verdana',
+                        bg='#282828',)
+    label.pack(padx=10, pady=10)
+
+    #create a button to close the popup window
+    button = ctk.CTkButton(master=popup,
+                        text='Close',
+                        text_font='Verdana',
+                        bg='#404040',
+                        height=10,
+                        command=popup.destroy)
+    button.pack(padx=10, pady=10)
 
 main.mainloop()

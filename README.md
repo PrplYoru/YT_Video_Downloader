@@ -89,6 +89,8 @@ This will guide you through the installation of the program.
     $ python main.py
    ```
 
+<p>PROGRAM NOT RESPONDING IS NORMAL.</p>
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
