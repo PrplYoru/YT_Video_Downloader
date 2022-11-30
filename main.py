@@ -22,8 +22,8 @@ main.resizable(False, False)
 main.configure(bg='#1f1f1f')
 
 frame = ctk.CTkFrame(main, 
-                   width=1000, 
-                   height=600, 
+                   width=1200, 
+                   height=800, 
                    bg='#282828',
                    corner_radius=10,)
 frame.pack(padx=20, pady=20, expand=True)
