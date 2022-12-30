@@ -12,7 +12,7 @@
 <br />
 <div align="center">
 
-<h3 align="center">YTVideoDownloader</h3>
+<h3 align="center">YTD (Youtube Downloader)</h3>
 
   <p align="center">
     GUI Youtube Video Downloader
@@ -55,7 +55,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-A simple gui youtube video downloader built with python, pytube, ffmpeg, tkinter and yt-dlp. 
+A simple gui youtube video downloader built with python, flet and yt-dlp. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -64,10 +64,8 @@ A simple gui youtube video downloader built with python, pytube, ffmpeg, tkinter
 ### Built With
 
 * [Python](https://www.python.org/)
-* [Pytube](https://pytube.io/)
-* [TKinter](http://tkdocs.com/)
 * [Yt-dlp](https://github.com/yt-dlp/yt-dlp)
-* [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter)
+* [Flet](https://flet.dev/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -89,12 +87,12 @@ This will guide you through the installation of the program.
     $ python main.py
    ```
 
-<p>PROGRAM NOT RESPONDING IS NORMAL.</p>
-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Download private videos
+
+<H1>DOESN'T WORK IN NEW VERSION.</H1>
 
 This will guide you through the process of downloading private and members-only videos.
 
@@ -114,7 +112,10 @@ There's no need to export the cookie file again, unless it gives you any access 
   - [2022/06/21] Up to 4k
 - [2022/07/18] Added option to download members-only and private videos
 - [2022/11/29] Modernized UI using CustomTkinter
-- [??/??/??] Reorganize UI
+- [2022/12/30] UI overhaul
+- [??/??/??] Solve cookies.txt problem
+- [??/??/??] Solve quality problems
+- [??/??/??] Add option to change theme of the program
 
 See the [open issues](https://github.com/Edoardo-Morosanu/YT_Video_Downloader/issues) for a full list of proposed features (and known issues).
 

@@ -1,5 +1,2 @@
-pytube
-ffmpeg-python
-customtkinter
-tk
+flet
 yt-dlp
