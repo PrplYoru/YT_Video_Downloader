@@ -92,7 +92,7 @@ This will guide you through the installation of the program.
 
 ## Download private videos
 
-<H1>DOESN'T WORK IN NEW VERSION.</H1>
+<H2>Will fix in next update(Expected 2nd week Jan 2023)</H2>
 
 This will guide you through the process of downloading private and members-only videos.
 
@@ -110,11 +110,11 @@ There's no need to export the cookie file again, unless it gives you any access 
 - [2022/06/21] Custom destination folder
 - [2022/06/21] Option to choose quality of video
   - [2022/06/21] Up to 4k
+  - [2022/12/31] Up to 8k
 - [2022/07/18] Added option to download members-only and private videos
 - [2022/11/29] Modernized UI using CustomTkinter
 - [2022/12/30] UI overhaul
 - [??/??/??] Solve cookies.txt problem
-- [??/??/??] Solve quality problems
 - [??/??/??] Add option to change theme of the program
 
 See the [open issues](https://github.com/Edoardo-Morosanu/YT_Video_Downloader/issues) for a full list of proposed features (and known issues).

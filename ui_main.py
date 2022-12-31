@@ -27,6 +27,7 @@ cont = ft.Container(
             ft.dropdown.Option("1080p"),
             ft.dropdown.Option("1440p"),
             ft.dropdown.Option("2160p"),
+            ft.dropdown.Option("4320p"),
         ],
         alignment=ft.alignment.bottom_center,
     ),
@@ -56,7 +57,8 @@ filenamefield = ft.TextField(
 )
 
 checkbx = ft.Checkbox(
-    label="Is this a members only/private video?",
+    label="Is this a members only/private video?(Needs to be fixed)",
+    disabled=True,
     value=False,
     label_position=ft.LabelPosition.LEFT,
     fill_color=ft.colors.BLUE_GREY,
