@@ -16,6 +16,7 @@ cont1 = ft.Container(
 cont = ft.Container(
     content=ft.Dropdown(
         width=300,
+        disabled=True,
         label="Quality",
         hint_text="Choose the quality of the video*",
         options=[
@@ -36,6 +37,7 @@ cont = ft.Container(
 dd = ft.Dropdown(
     label="Type*",
     border_color=ft.colors.BLUE_GREY,
+    on_change=lambda _: check(dd.value),
     options=[
         ft.dropdown.Option("Audio"),
         ft.dropdown.Option("Video"),
@@ -57,8 +59,7 @@ filenamefield = ft.TextField(
 )
 
 checkbx = ft.Checkbox(
-    label="Is this a members only/private video?(Needs to be fixed)",
-    disabled=True,
+    label="Is this a members only/private video?",
     value=False,
     label_position=ft.LabelPosition.LEFT,
     fill_color=ft.colors.BLUE_GREY,
@@ -66,7 +67,7 @@ checkbx = ft.Checkbox(
 
 elevbtn = ft.ElevatedButton(
     content=ft.Text("Download", size=18, font_family="Verdana"),
-    on_click=lambda _:download(dd.value, linkfield.value, cont.content.value, file, filenamefield.value),
+    on_click=lambda _:download(dd.value, linkfield.value, cont.content.value, file, filenamefield.value, checkbx.value),
     style=ft.ButtonStyle(
         shape=ft.RoundedRectangleBorder(radius=10),
         padding=ft.padding.symmetric(horizontal=30, vertical=15),
@@ -162,6 +163,15 @@ def openDial(e: ft.FilePickerResultEvent):
     cont1.content = ft.Text(f'Path: {file}', size=15, font_family="Verdana")
     cont1.update()
     elevbtn.update()
+
+def check(qval):
+    if qval == "Audio":
+        cont.content.disabled = True
+        cont.update()
+    else:
+        cont.content.disabled = False
+        cont.update()
+        
 
 
 

@@ -1,6 +1,6 @@
 import yt_dlp, time, os
 
-def download(filetp, link, qual, path, filename):
+def download(filetp, link, qual, path, filename, priv):
     
     current_time = time.time()
     info_dict = yt_dlp.YoutubeDL().extract_info(link, download=False)
@@ -24,10 +24,17 @@ def download(filetp, link, qual, path, filename):
             filename = info_dict.get('title', None)
     if filetp == 'Audio':
         try:
-            ydl_opts = {
-                'format': 'bestaudio/best',
-                'outtmpl': f'{path}/{filename}.mp3',
-            }
+            if priv:
+                ydl_opts = {
+                    'format': 'bestaudio/best',
+                    'outtmpl': f'{path}/{filename}.mp3',
+                    'cookiefile': 'cookies.txt',
+                }
+            else:
+                ydl_opts = {
+                    'format': 'bestaudio/best',
+                    'outtmpl': f'{path}/{filename}.mp3',
+                }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([link])
                 os.utime(f'{path}/{filename}.mp3', (current_time, current_time))
@@ -35,11 +42,19 @@ def download(filetp, link, qual, path, filename):
             print(f'Error: {e}')
     elif filetp == 'Video':
         try:
-            ydl_opts = {
-                'format': f'{qual}',
-                'outtmpl': f'{path}/{filename}.mp4',
-                'extract_audio': False,
-            }
+            if priv:
+                ydl_opts = {
+                    'format': f'{qual}',
+                    'outtmpl': f'{path}/{filename}.mp4',
+                    'extract_audio': False,
+                    'cookiefile': 'cookies.txt',
+                }
+            else:
+                ydl_opts = {
+                    'format': f'{qual}',
+                    'outtmpl': f'{path}/{filename}.mp4',
+                    'extract_audio': False,
+                }
             if qual == '137':
                 if ydl_opts['format'] in info_dict['formats']:
                     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -59,11 +74,19 @@ def download(filetp, link, qual, path, filename):
             print(f'Error: {e}')
     elif filetp == 'Both':
         try:
-            ydl_opts = {
-                'format': f'{qual}',
-                'outtmpl': f'{path}/{filename}.%(ext)s',
-                'merge_output_format': 'mp4',
-            }
+            if priv:
+                ydl_opts = {
+                    'format': f'{qual}',
+                    'outtmpl': f'{path}/{filename}.%(ext)s',
+                    'merge_output_format': 'mp4',
+                    'cookiefile': 'cookies.txt',
+                }
+            else:
+                ydl_opts = {
+                    'format': f'{qual}',
+                    'outtmpl': f'{path}/{filename}.%(ext)s',
+                    'merge_output_format': 'mp4',
+                }
             if qual == '137':
                 if ydl_opts['format'] in info_dict['formats']:
                     ydl_opts['format'] = f'{qual}+bestaudio/best'

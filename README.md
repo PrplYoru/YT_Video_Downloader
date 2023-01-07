@@ -92,8 +92,6 @@ This will guide you through the installation of the program.
 
 ## Download private videos
 
-<H2>Will fix in next update(Expected 2nd week Jan 2023)</H2>
-
 This will guide you through the process of downloading private and members-only videos.
 
 First of all download an extension to export the cookies from youtube to a txt file, like:
