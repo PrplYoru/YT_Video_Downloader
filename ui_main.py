@@ -1,6 +1,6 @@
 import flet as ft
 import os
-from flet.text import TextAlign
+from flet import TextAlign
 from download import download
 
 file = f'C:/Users/{os.getlogin()}/Downloads'

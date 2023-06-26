@@ -62,7 +62,7 @@ def download(filetp, link, qual, path, filename, priv):
                         os.utime(f'{path}/{filename}.mp4', (current_time, current_time))
                 else:
                     print(f"ERROR: The format '{ydl_opts['format']}' is not available for this video, attempting to download with different framerate...")
-                    ydl_opts['format'] = '299'
+                    ydl_opts['format'] = '399'
                     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                         ydl.download([link])
                         os.utime(f'{path}/{filename}.mp4', (current_time, current_time))
@@ -95,7 +95,7 @@ def download(filetp, link, qual, path, filename, priv):
                         os.utime(f'{path}/{filename}.mp4', (current_time, current_time))
                 else:
                     print(f"ERROR: The format '{ydl_opts['format']}' is not available for this video, attempting to download with different framerate...")
-                    ydl_opts['format'] = '299+bestaudio/best'
+                    ydl_opts['format'] = '399+bestaudio/best'
                     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                         ydl.download([link])
                         os.utime(f'{path}/{filename}.mp4', (current_time, current_time))
